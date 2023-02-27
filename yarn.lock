@@ -2380,6 +2380,11 @@ synckit@^0.8.4:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.5.0"
 
+tailwindcss-dotted-background@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tailwindcss-dotted-background/-/tailwindcss-dotted-background-1.0.1.tgz#40ceb52310867ca3c26a78aff5d8683ee004d83e"
+  integrity sha512-GvT2O9mKq6tdM958Cyhmm0omV+LuF/wYusHi2SNhZjB2Ft2WLnEQt7QR7ByzUJ2fT94qnW86Mib4tHTJYRLgTA==
+
 tailwindcss@^3.2.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.7.tgz#5936dd08c250b05180f0944500c01dce19188c07"
