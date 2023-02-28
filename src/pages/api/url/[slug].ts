@@ -29,7 +29,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const cppImg = image
         .greyscale()
         .getBufferAsync("image/bmp")
-        .then((bmp) => res.send(bmp));
+        .then((bmp) => {
+          const buf = Uint8Array.prototype.slice.call(bmp);
+          res.send(Buffer.from(buf.slice(54)));
+        });
       // const cppImg = image.greyscale().contrast(1).posterize(2).dither16();
       //   return res.send(cppImg);
     })
