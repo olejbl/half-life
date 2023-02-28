@@ -14,6 +14,14 @@ export const exampleRouter = createTRPCRouter({
         greeting: `Hello ${input.text}`,
       };
     }),
+  image: publicProcedure
+    .input(z.object({ url: z.string() }))
+    .query(({ input }) => {
+      return {
+        binary: `${input.url}`,
+        // binaryData: binaryData,
+      };
+    }),
 
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.example.findMany();

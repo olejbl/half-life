@@ -5,7 +5,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "Hei på deg" });
+  const hello = api.example.image.useQuery({
+    url: "https://cdn.sanity.io/images/07sn9sev/production/28f52918296a22ce6e357e8c65aaa945c293817d-3092x3865.jpg?w=800&h=1000",
+  });
 
   return (
     <>
@@ -22,7 +24,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8"></div>
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+              {hello.data ? hello.data.binary : "Loading tRPC query..."}
             </p>
             <AuthShowcase />
           </div>
