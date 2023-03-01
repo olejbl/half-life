@@ -27,7 +27,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // format is RGBA, so move 4 steps per pixel
     for (let index = 0; index < data.length; index += 3) {
       // Get the average of the RGB (we ignore A)
-      const avg = (data[index] + data[index + 1] + data[index + 2]) / 3;
+      const avg =
+        ((data[index] || 0) + (data[index + 1] || 0) + (data[index + 2] || 0)) /
+        3;
       if (avg > 128) {
         number += Math.pow(2, byteIndex);
       }
