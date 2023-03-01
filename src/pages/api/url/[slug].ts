@@ -20,6 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   ) {
     let output_string = "";
     let output_index = 0;
+    const output_array = [];
 
     let byteIndex = 7;
     let number = 0;
@@ -55,6 +56,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         const b = "0x" + byteSet;
         output_string += b + ", ";
+        output_array.push(parseInt(b, 16));
         output_index++;
         if (output_index >= 16) {
           output_string += "\n";
@@ -64,8 +66,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         byteIndex = 7;
       }
     }
-    console.log(output_string);
-    return output_string;
+    console.log(output_array);
+    return output_array;
   }
 
   //https://codesandbox.io/s/suspicious-wind-p3htvj?file=/src/components/JimpDemo/JimpDemo.js
@@ -95,11 +97,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           console.log(header);
           console.log("header END");
           const cppBuffer = Buffer.from(body);
-          cppBuffer.write(horizontal1bit(body, 128, 32));
+          //   cppBuffer.write(horizontal1bit(body, 128, 32));
           console.log("START cppBuffer");
           console.log(cppBuffer);
           console.log("END cppBuffer");
           const output = horizontal1bit(body, 128, 32);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           res.send(Buffer.from(output));
         });
     })
