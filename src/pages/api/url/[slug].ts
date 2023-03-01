@@ -99,8 +99,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           console.log("START cppBuffer");
           console.log(cppBuffer);
           console.log("END cppBuffer");
-
-          res.send(horizontal1bit(body, 128, 32));
+          const output = horizontal1bit(body, 128, 32);
+          res.send(Buffer.from(output));
         });
     })
     .catch((err) => {
